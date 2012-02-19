@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
+""" Hello World implementation with phaser. """
+
 from __future__ import print_function
 from phaser import Phase, Phaser
-
-""" Hello World implementation with phaser. """
 
 class PrintPhase(Phase):
 

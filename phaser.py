@@ -37,6 +37,16 @@ class Phase(object):
     def __iter__(self):
         return self.iter()
 
+    def description(self):
+        """ Override or set as an attribute. """
+        return self.__class__.__name__
+
+    def __str__(self):
+        if isinstance(self.description, str):
+            return self.description
+        else:
+            return self.description()
+
 
 class Phaser(object):
     """ Class for phase execution.
@@ -78,7 +88,7 @@ class Phaser(object):
         print("----------------")
         for index, phase in enumerate(self.phases):
             print ("%i) %s:    %s" %
-                    (index, phase.__class__.__name__, phase.__doc__))
+                    (index, str(phase), phase.__doc__))
 
     def __call__(self):
         parser = OptionParser()

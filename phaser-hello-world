@@ -15,12 +15,13 @@ class PrintPhase(Phase):
         return iter(self.characters)
 
 class File(Phase):
-    """ Write 'Hello World!" to a file 23 times """
 
-    def __init__(self):
+    def __init__(self, n):
         self.string = "Hello World!"
         self.file_name = "hello.txt"
-        self.repeats = 23
+        self.repeats = n
+        self.__doc__ = "Write 'Hello World!' to a file %i times " % n
+        self.description = "File%i" % n
 
     def precondition(self):
         if os.path.exists(self.file_name):
@@ -55,5 +56,5 @@ class World(PrintPhase):
         print("")
 
 if __name__ == '__main__':
-    phsr = Phaser(phases=[Hello(), World(), File()])
+    phsr = Phaser(phases=[Hello(), World(), File(23)])
     phsr()

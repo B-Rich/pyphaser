@@ -1,0 +1,55 @@
+Phaser -- A Pipeline System
+---------------------------
+
+Lightweight framework for phased execution of tasks. The term *phased* means,
+that an application is split logically into distinct and possibly dependent
+phases of execution. The key idea is that `Phaser` allows you to execute
+*phases* from the command line and allows you to resume an application from a
+given phase. This is particularly helpful in research environments where the
+phases may be brittle such that sometimes manual intervention and resuming a
+pipeline may be required.
+
+A *phase* is implemented as a subclass of `phaser.phase`, where the following
+methods two methods must be implemented:
+
+    execute              <---- execute phase for a single item
+    iter                 <---- returns a list of items for execute
+
+The following methods can be implemented to provide for additional robustness:
+
+    precondition         <---- check preconditions
+    preexec              <---- things to execute before starting
+    postexec             <---- things to execute after finishing
+    postcondition        <---- check postconditions
+
+Usage Example
+-------------
+
+See the `example.py` which implements the famous `Hello World!` as a phased
+application. It consits of two phases: `Hello` and `World`, which both print a
+part of the desired string.
+
+    zsh» ./example -h
+    Usage: example [options]
+
+    Options:
+    -h, --help            show this help message and exit
+    -d, --display-all     display all available phases, in order
+    -s phase, --single=phase
+                            execute a single phase
+
+    zsh» ./example -d
+    Available Phases
+    ----------------
+    0) Hello:     Print 'Hello ' 
+    1) World:     Print 'World!' 
+
+    zsh» ./example
+    Hello World!
+
+    zsh» ./example -s Hello
+    Hello
+
+    zsh» ./example -s World
+    World!
+

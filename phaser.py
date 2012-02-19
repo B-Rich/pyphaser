@@ -7,9 +7,6 @@ from optparse import OptionParser
 class Phase(object):
     """ Abstract class for a phase """
 
-    def __init__(self):
-        pass
-
     def precondition(self):
         """ Override this to implement checking preconditions. """
         pass

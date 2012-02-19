@@ -66,8 +66,6 @@ API for phaser.Phase
     |
     |  __call__(self, *args)
     |
-    |  __init__(self)
-    |
     |  __iter__(self)
     |
     |  execute(self, *args)

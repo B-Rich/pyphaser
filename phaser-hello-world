@@ -16,12 +16,12 @@ class PrintPhase(Phase):
 
 class File(Phase):
 
-    def __init__(self, n):
+    def __init__(self, repeats):
         self.string = "Hello World!"
         self.file_name = "hello.txt"
-        self.repeats = n
-        self.__doc__ = "Write 'Hello World!' to a file %i times " % n
-        self.description = "File%i" % n
+        self.repeats = repeats
+        self.__doc__ = "Write 'Hello World!' to a file %i times " % repeats
+        self.description = "File%i" % repeats
 
     def precondition(self):
         if os.path.exists(self.file_name):

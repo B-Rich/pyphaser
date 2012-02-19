@@ -16,10 +16,16 @@ class Phase(object):
     def __call__(self, *args):
         return self.execute(*args)
 
+    def execute(self):
+        pass
+
     def postexec(sefl):
         pass
 
     def postcondition(self):
+        pass
+
+    def iter(self):
         pass
 
     def __iter__(self):

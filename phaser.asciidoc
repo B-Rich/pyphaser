@@ -58,7 +58,7 @@ and `iter` will return each charter in turn.
 Author, Copyright and License
 -----------------------------
 
-| (C) 2012 Valentin Haenel `<valentin.haenel@gmx.de>`
+(C) 2012 Valentin Haenel `<valentin.haenel@gmx.de>`
 
 PyPhaser is licensed under the terms of the MIT License.
 

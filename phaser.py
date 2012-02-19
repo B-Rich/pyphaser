@@ -59,6 +59,10 @@ class Phaser(object):
                 action='store_true',
                 dest='display',
                 help='display all available phases, in order')
+        parser.add_option('-a', '--all',
+                action='store_true',
+                dest='all',
+                help='execute all available phases in order')
         parser.add_option('-s', '--single',
                 action='store',
                 type='string',
@@ -72,6 +76,8 @@ class Phaser(object):
             self.print_available_phases()
         elif opts.single:
             self.execute_single(self.phases_dict[opts.single])
-        else:
+        elif opts.all:
             self.execute_all_phases()
+        else:
+            parser.print_help()
 

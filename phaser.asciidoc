@@ -46,7 +46,7 @@ and `iter` will return each charter in turn.
     0) Hello:     Print 'Hello ' 
     1) World:     Print 'World!' 
 
-    zsh» ./example
+    zsh» ./example -a
     Hello World!
 
     zsh» ./example -s Hello

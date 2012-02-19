@@ -32,6 +32,7 @@ class File(Phase):
 
     def execute(self, _):
         self.fp.write(self.string)
+        self.fp.write('\n')
 
     def postexec(self):
         self.fp.flush()

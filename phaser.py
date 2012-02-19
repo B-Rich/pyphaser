@@ -63,7 +63,11 @@ class Phaser(object):
 
     def execute_all_phases(self):
         """ Execute all phases. """
-        for phase in self.phases:
+        self.execute_sequence(self.phases)
+
+    def execute_sequence(self, sequence):
+        """ Execute a sequence of phases """
+        for phase in sequence:
             self.execute_single(phase)
 
     @staticmethod
@@ -106,6 +110,12 @@ class Phaser(object):
                 dest='single',
                 metavar='phase',
                 help='execute a single phase')
+        parser.add_option('-u', '--until',
+                action='store',
+                type='string',
+                dest='until',
+                metavar='phase',
+                help='execute until phase')
         opts, args = parser.parse_args()
         self.phases_dict = dict((phase.__class__.__name__, phase) for phase in
             self.phases)
@@ -113,6 +123,14 @@ class Phaser(object):
             self.print_available_phases()
         elif opts.single:
             self.execute_single(self.phases_dict[opts.single])
+        elif opts.until:
+            result = []
+            for phase in self.phases:
+                if str(phase) == opts.until:
+                    break
+                else:
+                    result.append(phase)
+            self.execute_sequence(result)
         elif opts.all:
             self.execute_all_phases()
         else:

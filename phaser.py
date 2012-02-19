@@ -1,6 +1,8 @@
 from __future__ import print_function
 from optparse import OptionParser
 
+""" PyPhaser -- A lightweight Pipeline framework for phased execution """
+
 class Phase(object):
     """ Abstract class for a phase """
 
@@ -8,43 +10,61 @@ class Phase(object):
         pass
 
     def precondition(self):
+        """ Override this to implement checking preconditions. """
         pass
 
     def preexec(self):
+        """ Override this to execute things before phase execution """
         pass
 
     def __call__(self, *args):
         return self.execute(*args)
 
-    def execute(self):
+    def execute(self, *args):
+        """ Implement this with the code that should be executed. """
         pass
 
     def postexec(sefl):
+        """ Override this to execute things before phase execution """
         pass
 
     def postcondition(self):
+        """ Override this to implement checking postconditions. """
         pass
 
     def iter(self):
+        """ Implement this to return an iterator for the items to exectue. """
         pass
 
     def __iter__(self):
         return self.iter()
 
+
 class Phaser(object):
-    """ Class for phase execution. """
+    """ Class for phase execution.
+
+    Parameters
+    ----------
+    phases : list
+        list of instances of objects which inherit from Phase
+    """
 
     def __init__(self, phases=None):
         self.phases = [] if not phases else phases
 
-    def add_phase(self, phase):
-        self.phases.append(phase)
-
     def execute_all_phases(self):
+        """ Execute all phases. """
         for phase in self.phases:
             self.execute_single(phase)
 
     def execute_single(self, phase):
+        """ Execute a single phases.
+
+        Parameters
+        ----------
+        phase : phase instance
+            the phase to execute
+        """
         phase.precondition()
         phase.preexec()
         for args in phase:
@@ -53,6 +73,7 @@ class Phaser(object):
         phase.postcondition()
 
     def print_available_phases(self):
+        """ Print all available phases. """
         print("Available Phases")
         print("----------------")
         for index,phase in enumerate(self.phases):

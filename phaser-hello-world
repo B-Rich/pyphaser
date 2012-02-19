@@ -3,6 +3,7 @@
 """ Hello World implementation with phaser. """
 
 from __future__ import print_function
+import os
 from phaser import Phase, Phaser
 
 class PrintPhase(Phase):
@@ -12,6 +13,31 @@ class PrintPhase(Phase):
 
     def iter(self):
         return iter(self.characters)
+
+class File(Phase):
+    """ Write 'Hello World!" to a file 23 times """
+
+    def __init__(self):
+        self.string = "Hello World!"
+        self.file_name = "hello.txt"
+        self.repeats = 23
+
+    def precondition(self):
+        if os.path.exists(self.file_name):
+            raise Exception("File '%s' exists!" % self.file_name)
+
+    def preexec(self):
+        self.fp = open(self.file_name, 'w')
+
+    def execute(self, _):
+        self.fp.write(self.string)
+
+    def postexec(self):
+        self.fp.flush()
+        self.fp.close()
+
+    def iter(self):
+        return iter(range(23))
 
 class Hello(PrintPhase):
     """ Print 'Hello ' """
@@ -29,5 +55,5 @@ class World(PrintPhase):
         print("")
 
 if __name__ == '__main__':
-    phsr = Phaser(phases=[Hello(), World()])
+    phsr = Phaser(phases=[Hello(), World(), File()])
     phsr()

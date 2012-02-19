@@ -26,14 +26,14 @@ The following methods can be implemented to provide for additional robustness:
 Usage Example
 -------------
 
-See the `example.py` which implements the famous `Hello World!` as a phased
+See the `phaser-hello-world` which implements the famous `Hello World!` as a phased
 application. It consists of two phases: `Hello` and `World`, which both print a
 part of the desired string. The two classes are implemented such that they
 contain a list of characters to print, where `execute` will print a character
 and `iter` will return each charter in turn.
 
-    zsh» ./example -h
-    Usage: example [options]
+    zsh» ./phaser-hello-world -h
+    Usage: phaser-hello-world [options]
 
     Options:
     -h, --help            show this help message and exit
@@ -42,19 +42,19 @@ and `iter` will return each charter in turn.
     -s phase, --single=phase
                             execute a single phase
 
-    zsh» ./example -d
+    zsh» ./phaser-hello-world -d
     Available Phases
     ----------------
     0) Hello:     Print 'Hello '
     1) World:     Print 'World!'
 
-    zsh» ./example -a
+    zsh» ./phaser-hello-world -a
     Hello World!
 
-    zsh» ./example -s Hello
+    zsh» ./phaser-hello-world -s Hello
     Hello
 
-    zsh» ./example -s World
+    zsh» ./phaser-hello-world -s World
     World!
 
 API for phaser.Phase

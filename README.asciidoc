@@ -38,6 +38,7 @@ and `iter` will return each charter in turn.
     Options:
     -h, --help            show this help message and exit
     -d, --display-all     display all available phases, in order
+    -a, --all             execute all available phases in order
     -s phase, --single=phase
                             execute a single phase
 

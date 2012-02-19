@@ -1,7 +1,8 @@
+""" PyPhaser -- A lightweight Pipeline framework for phased execution """
+
 from __future__ import print_function
 from optparse import OptionParser
 
-""" PyPhaser -- A lightweight Pipeline framework for phased execution """
 
 class Phase(object):
     """ Abstract class for a phase """
@@ -24,7 +25,7 @@ class Phase(object):
         """ Implement this with the code that should be executed. """
         pass
 
-    def postexec(sefl):
+    def postexec(self):
         """ Override this to execute things before phase execution """
         pass
 
@@ -51,13 +52,15 @@ class Phaser(object):
 
     def __init__(self, phases=None):
         self.phases = [] if not phases else phases
+        self.phases_dict = None
 
     def execute_all_phases(self):
         """ Execute all phases. """
         for phase in self.phases:
             self.execute_single(phase)
 
-    def execute_single(self, phase):
+    @staticmethod
+    def execute_single(phase):
         """ Execute a single phases.
 
         Parameters
@@ -76,7 +79,7 @@ class Phaser(object):
         """ Print all available phases. """
         print("Available Phases")
         print("----------------")
-        for index,phase in enumerate(self.phases):
+        for index, phase in enumerate(self.phases):
             print ("%i) %s:    %s" %
                     (index, phase.__class__.__name__, phase.__doc__))
 

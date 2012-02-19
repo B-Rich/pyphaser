@@ -29,4 +29,5 @@ class World(PrintPhase):
         print("")
 
 if __name__ == '__main__':
-    Phaser(phases=[Hello(), World()])()
+    phsr = Phaser(phases=[Hello(), World()])
+    phsr()

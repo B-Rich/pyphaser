@@ -34,7 +34,7 @@ class Phase(object):
         pass
 
     def iter(self):
-        """ Implement this to return an iterator for the items to exectue. """
+        """ Implement this to return an iterator for the items to execute. """
         pass
 
     def __iter__(self):

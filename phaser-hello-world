@@ -39,7 +39,7 @@ class File(Phase):
         self.fp.close()
 
     def iter(self):
-        return iter(range(23))
+        return iter(range(self.repeats))
 
 class Hello(PrintPhase):
     """ Print 'Hello ' """
@@ -57,5 +57,5 @@ class World(PrintPhase):
         print("")
 
 if __name__ == '__main__':
-    phsr = Phaser(phases=[Hello(), World(), File(23)])
+    phsr = Phaser(phases=[Hello(), World(), File(3)])
     phsr()

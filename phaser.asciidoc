@@ -27,7 +27,9 @@ Usage Example
 
 See the `example.py` which implements the famous `Hello World!` as a phased
 application. It consits of two phases: `Hello` and `World`, which both print a
-part of the desired string.
+part of the desired string. The two classes are implemented such that they
+contain a list of characters to print, where `execute` will print a charcter
+and `iter` will return each charter in turn.
 
     zsh» ./example -h
     Usage: example [options]

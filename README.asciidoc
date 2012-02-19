@@ -55,6 +55,40 @@ and `iter` will return each charter in turn.
     zsh» ./example -s World
     World!
 
+API for phaser.Phase
+--------------------
+
+    phaser.Phase = class Phase(__builtin__.object)
+    |  Abstract class for a phase
+    |
+    |  Methods defined here:
+    |
+    |  __call__(self, *args)
+    |
+    |  __init__(self)
+    |
+    |  __iter__(self)
+    |
+    |  execute(self, *args)
+    |      Implement this with the code that should be executed.
+    |
+    |  iter(self)
+    |      Implement this to return an iterator for the items to execute.
+    |
+    |  postcondition(self)
+    |      Override this to implement checking postconditions.
+    |
+    |  postexec(self)
+    |      Override this to execute things before phase execution
+    |
+    |  precondition(self)
+    |      Override this to implement checking preconditions.
+    |
+    |  preexec(self)
+    |      Override this to execute things before phase execution
+
+
+
 Author, Copyright and License
 -----------------------------
 

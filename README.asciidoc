@@ -1,7 +1,8 @@
-PyPhaser -- A lightweight Pipeline framework for phased execution
------------------------------------------------------------------
+PyPhaser -- A Lightweight Pipeline Framework for Phased Execution
+=================================================================
+author: Valentin Haenel <valentin.haenel@gmx.de>
 
-Lightweight framework for phased execution of tasks. The term *phased* means,
+Lightweight framework for *phased* execution of tasks. The term *phased* means,
 that an application is split logically into distinct and possibly dependent
 phases of execution. The key idea is that `Phaser` allows you to execute
 *phases* from the command line and allows you to resume an application from a

@@ -8,6 +8,9 @@ from phaser import Phase, Phaser
 
 class PrintPhase(Phase):
 
+    def __init__(self, characters):
+        self.characters = characters
+
     def execute(self, character):
         print(character, end='')
 
@@ -45,13 +48,13 @@ class Hello(PrintPhase):
     """ Print 'Hello ' """
 
     def __init__(self):
-        self.characters = "Hello "
+        super(Hello, self).__init__("Hello ")
 
 class World(PrintPhase):
     """ Print 'World!' """
 
     def __init__(self):
-        self.characters = "World!"
+        super(World, self).__init__("World!")
 
     def postexec(self):
         print("")

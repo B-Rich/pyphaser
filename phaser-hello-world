@@ -17,6 +17,21 @@ class PrintPhase(Phase):
     def iter(self):
         return iter(self.characters)
 
+class Hello(PrintPhase):
+    """ Print 'Hello ' """
+
+    def __init__(self):
+        super(Hello, self).__init__("Hello ")
+
+class World(PrintPhase):
+    """ Print 'World!' """
+
+    def __init__(self):
+        super(World, self).__init__("World!")
+
+    def postexec(self):
+        print("")
+
 class File(Phase):
 
     def __init__(self, repeats):
@@ -43,21 +58,6 @@ class File(Phase):
 
     def iter(self):
         return iter(range(self.repeats))
-
-class Hello(PrintPhase):
-    """ Print 'Hello ' """
-
-    def __init__(self):
-        super(Hello, self).__init__("Hello ")
-
-class World(PrintPhase):
-    """ Print 'World!' """
-
-    def __init__(self):
-        super(World, self).__init__("World!")
-
-    def postexec(self):
-        print("")
 
 if __name__ == '__main__':
     phsr = Phaser(phases=[Hello(), World(), File(3)])

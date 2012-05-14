@@ -46,8 +46,13 @@ character and ``iter`` will return each charter in turn.::
     ----------------
     0) Hello:     Print 'Hello '
     1) World:     Print 'World!'
+    2) File3:    Write 'Hello World!' to a file 3 times
 
     zsh» ./phaser-hello-world -a
+    Hello World!
+    zsh» cat hello.txt
+    Hello World!
+    Hello World!
     Hello World!
 
     zsh» ./phaser-hello-world -s Hello

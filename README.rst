@@ -1,17 +1,16 @@
 PyPhaser -- A Lightweight Pipeline Framework for Phased Execution
 =================================================================
-author: Valentin Haenel <valentin.haenel@gmx.de>
 
-Lightweight framework for *phased* execution of tasks. The term *phased* means,
-that an application is split logically into distinct and possibly dependent
-phases of execution. The key idea is that `Phaser` allows you to execute
-*phases* from the command line and allows you to resume an application from a
-given *phase*. This is particularly helpful in research environments where the
-phases may be brittle such that sometimes manual intervention and resuming a
-pipeline may be required.
+Lightweight framework for **phased** execution of tasks. The term **phased**
+means, that an application is split logically into distinct and possibly
+dependent phases of execution. The key idea is that ``Phaser`` allows you to
+execute **phases** from the command line and allows you to resume an
+application from a given **phase**. This is particularly helpful in research
+environments where the phases may be brittle such that sometimes manual
+intervention and resuming a pipeline may be required.
 
-A *phase* is implemented as a subclass of `phaser.Phase`, where the following
-methods two methods must be implemented::
+A **phase** is implemented as a subclass of ``phaser.Phase``, where the
+following methods two methods must be implemented::
 
     execute              <---- execute phase for a single item
     iter                 <---- returns a list of items for execute
@@ -26,11 +25,11 @@ The following methods can be implemented to provide for additional robustness::
 Usage Example
 -------------
 
-See the `phaser-hello-world` which implements the famous `Hello World!` as a phased
-application. It consists of two phases: `Hello` and `World`, which both print a
-part of the desired string. The two classes are implemented such that they
-contain a list of characters to print, where `execute` will print a character
-and `iter` will return each charter in turn.::
+See the ``phaser-hello-world`` which implements the famous ``Hello World!`` as
+a phased application. It consists of two phases: ``Hello`` and ``World``, which
+both print a part of the desired string. The two classes are implemented such
+that they contain a list of characters to print, where ``execute`` will print a
+character and ``iter`` will return each charter in turn.::
 
     zsh» ./phaser-hello-world -h
     Usage: phaser-hello-world [options]
@@ -57,8 +56,8 @@ and `iter` will return each charter in turn.::
     zsh» ./phaser-hello-world -s World
     World!
 
-API for phaser.Phase
---------------------
+API for ``phaser.Phase``
+------------------------
 
 Here is the basic API::
 
@@ -94,7 +93,7 @@ Here is the basic API::
 Author, Copyright and License
 -----------------------------
 
-(C) 2012 Valentin Haenel `<valentin.haenel@gmx.de>`
+(C) 2012 Valentin Haenel <valentin.haenel@gmx.de>
 
 PyPhaser is licensed under the terms of the MIT License.
 

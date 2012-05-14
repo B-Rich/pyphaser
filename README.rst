@@ -11,12 +11,12 @@ phases may be brittle such that sometimes manual intervention and resuming a
 pipeline may be required.
 
 A *phase* is implemented as a subclass of `phaser.Phase`, where the following
-methods two methods must be implemented:
+methods two methods must be implemented::
 
     execute              <---- execute phase for a single item
     iter                 <---- returns a list of items for execute
 
-The following methods can be implemented to provide for additional robustness:
+The following methods can be implemented to provide for additional robustness::
 
     precondition         <---- check preconditions
     preexec              <---- things to execute before starting
@@ -30,7 +30,7 @@ See the `phaser-hello-world` which implements the famous `Hello World!` as a pha
 application. It consists of two phases: `Hello` and `World`, which both print a
 part of the desired string. The two classes are implemented such that they
 contain a list of characters to print, where `execute` will print a character
-and `iter` will return each charter in turn.
+and `iter` will return each charter in turn.::
 
     zsh» ./phaser-hello-world -h
     Usage: phaser-hello-world [options]
@@ -59,6 +59,8 @@ and `iter` will return each charter in turn.
 
 API for phaser.Phase
 --------------------
+
+Here is the basic API::
 
     phaser.Phase = class Phase(__builtin__.object)
     |  Abstract class for a phase

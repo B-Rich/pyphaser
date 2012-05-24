@@ -120,7 +120,7 @@ class Phaser(object):
                 help='execute until phase')
         return parser
 
-    def check_user_args():
+    def check_user_args(self):
         """ Check user supplied args exist before executing any phase. """
         pass
 

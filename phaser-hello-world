@@ -4,30 +4,26 @@
 
 from __future__ import print_function
 import os
-from phaser import Phase, Phaser
+from phaser import Phase, IterPhase, Phaser
 
-class PrintPhase(Phase):
 
-    def __init__(self, characters):
-        self.characters = characters
+class Hello(Phase):
+    """ Print 'Hello ' """
 
-    def execute(self, character):
+    def execute(self):
+        print('Hello ', end='')
+
+class World(IterPhase):
+    """ Print 'World!' """
+
+    def __init__(self):
+        self.characters = 'World!'
+
+    def function(self, character):
         print(character, end='')
 
     def iter(self):
         return iter(self.characters)
-
-class Hello(PrintPhase):
-    """ Print 'Hello ' """
-
-    def __init__(self):
-        super(Hello, self).__init__("Hello ")
-
-class World(PrintPhase):
-    """ Print 'World!' """
-
-    def __init__(self):
-        super(World, self).__init__("World!")
 
     def postexec(self):
         print("")
@@ -48,7 +44,7 @@ class File(Phase):
     def preexec(self):
         self.fp = open(self.file_name, 'w')
 
-    def execute(self, _):
+    def execute(self):
         self.fp.write(self.string)
         self.fp.write('\n')
 

@@ -60,6 +60,7 @@ class Phaser(object):
     def __init__(self, phases=None):
         self.phases = [] if not phases else phases
         self.phases_dict = None
+        self.parser = Phaser.create_parser()
 
     def execute_all_phases(self):
         """ Execute all phases. """
@@ -94,7 +95,8 @@ class Phaser(object):
             print ("%i) %s:    %s" %
                     (index, str(phase), phase.__doc__))
 
-    def __call__(self):
+    @staticmethod
+    def create_parser():
         parser = OptionParser()
         parser.add_option('-d', '--display-all',
                 action='store_true',
@@ -116,7 +118,10 @@ class Phaser(object):
                 dest='until',
                 metavar='phase',
                 help='execute until phase')
-        opts, args = parser.parse_args()
+        return parser
+
+    def __call__(self):
+        opts, args = self.parser.parse_args()
         self.phases_dict = dict((phase.__class__.__name__, phase) for phase in
             self.phases)
         if opts.display:
@@ -134,5 +139,5 @@ class Phaser(object):
         elif opts.all:
             self.execute_all_phases()
         else:
-            parser.print_help()
+            self.parser.print_help()
 

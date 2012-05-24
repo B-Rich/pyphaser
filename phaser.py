@@ -30,13 +30,6 @@ class Phase(object):
         """ Override this to implement checking postconditions. """
         pass
 
-    def iter(self):
-        """ Implement this to return an iterator for the items to execute. """
-        pass
-
-    def __iter__(self):
-        return self.iter()
-
     def description(self):
         """ Override or set as an attribute. """
         return self.__class__.__name__
@@ -47,6 +40,23 @@ class Phase(object):
         else:
             return self.description()
 
+class IterPhase(Phase):
+    """ Abstract class for an iterating phase. """
+
+    def iter(self):
+        """ Implement this to return an iterator for the items to execute. """
+        pass
+
+    def execute(self):
+        for args in self:
+            self.function(args)
+
+    def function(self, arg):
+        """ Implement this to run on each argument """
+        pass
+
+    def __iter__(self):
+        return self.iter()
 
 class Phaser(object):
     """ Class for phase execution.
@@ -82,8 +92,7 @@ class Phaser(object):
         """
         phase.precondition()
         phase.preexec()
-        for args in phase:
-            phase.execute(args)
+        phase.execute()
         phase.postexec()
         phase.postcondition()
 

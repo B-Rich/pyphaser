@@ -120,10 +120,15 @@ class Phaser(object):
                 help='execute until phase')
         return parser
 
+    def check_user_args():
+        """ Check user supplied args exist before executing any phase. """
+        pass
+
     def __call__(self):
         opts, args = self.parser.parse_args()
         self.phases_dict = dict((phase.__class__.__name__, phase) for phase in
             self.phases)
+        self.check_user_args()
         if opts.display:
             self.print_available_phases()
         elif opts.single:

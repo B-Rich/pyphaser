@@ -95,8 +95,8 @@ pipeline::
     zsh» ./phaser-hello-world -s World
     World!
 
-API for ``phaser.Phase``
-------------------------
+API for ``phaser.Phase`` and ``phaser.IterPhase``
+-------------------------------------------------
 
 Here is the basic API
 

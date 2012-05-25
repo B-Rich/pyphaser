@@ -88,7 +88,7 @@ pipeline::
     Available Phases
     ----------------
     0) Hello: Print 'Hello '
-    1) World: Print 'World!
+    1) World: Print 'World!'
 
     zsh» ./phaser-hello-world -a
     Hello World!

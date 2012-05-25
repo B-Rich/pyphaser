@@ -100,9 +100,22 @@ class Phaser(object):
         """ Print all available phases. """
         print("Available Phases")
         print("----------------")
+        indices = []
+        phases = []
+        descriptions = []
         for index, phase in enumerate(self.phases):
-            print ("%i) %s:    %s" %
-                    (index, str(phase), phase.__doc__))
+            indices.append(str(index).strip())
+            phases.append(str(phase).strip())
+            descriptions.append(str(phase.__doc__).strip())
+        def align(seq):
+            max_ = max(map(len, seq))
+            return [i.ljust(max_) for i in seq]
+        indices = align(indices)
+        phases = align(phases)
+        descriptions = align(descriptions)
+        for i in range(len(indices)):
+            print ("%s) %s: %s" %
+                (indices[i], phases[i], descriptions[i]))
 
     @staticmethod
     def create_parser():

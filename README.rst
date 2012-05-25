@@ -1,5 +1,9 @@
-PyPhaser -- A Lightweight Pipeline Framework for Phased Execution
-=================================================================
+========
+PyPhaser
+========
+
+A Lightweight Pipeline Framework for Phased Execution
+-----------------------------------------------------
 
 Lightweight framework for **phased** execution of tasks. The term **phased**
 means, that an application is split logically into distinct and possibly
@@ -61,9 +65,9 @@ Usage Example
 -------------
 
 See the ``phaser-hello-world`` which implements the famous ``Hello World!`` as
-a phased application. It consists of the two phases: ``Hello`` and ``World``, which
-both print a part of the desired string. The two classes are implemented using
-the standard ``Phase`` and the ``IterPhase`` respectively.
+a phased application. It consists of the two phases: ``Hello`` and ``World``,
+which both print a part of the desired string. The two classes are implemented
+using the standard ``Phase`` and the ``IterPhase`` as showen above.
 
 The ``World`` phase contains a list of characters to print, where ``function``
 will print a character and ``iter`` will return each charter in turn. Now,

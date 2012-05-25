@@ -42,7 +42,8 @@ simple, sequential tasks and the second is for tasks that might prospectively
 be parallelized in the future.
 
 In addition, the following methods can be implemented to provide for additional
-robustness::
+robustness, which give you a poor-mans
+`design by contract <http://en.wikipedia.org/wiki/Design_by_contract>`_:
 
 :precondition:
     check preconditions

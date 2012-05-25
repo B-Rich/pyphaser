@@ -156,6 +156,9 @@ TODO
 * automatic logging/tracing
 * caching via joblib
 * example of how to inject options into the Phaser class parser
+* Embedded phases, notion of dependencies and cycles
+* Graphical (dot) representation of the pipeline
+* Global pre- and postconditions
 
 Author, Copyright and License
 -----------------------------

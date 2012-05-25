@@ -146,6 +146,13 @@ IterPhase::
     |  iter(self)
     |      Implement this to return an iterator for the items to execute.
 
+TODO
+----
+
+* automatic logging/tracing
+* caching via joblib
+* example of how to inject options into the Phaser class parser
+
 Author, Copyright and License
 -----------------------------
 

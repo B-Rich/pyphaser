@@ -54,6 +54,7 @@ class IterPhase(Phase):
         pass
 
     def execute(self):
+        """ Override this with alternative execution mechanisms. """
         for args in self:
             self.function(args)
 

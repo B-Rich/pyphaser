@@ -49,6 +49,7 @@ class IterPhase(Phase):
 
     __metaclass__ = abc.ABCMeta
 
+    @abc.abstractmethod
     def iter(self):
         """ Implement this to return an iterator for the items to execute. """
         pass

@@ -1,11 +1,14 @@
 """ PyPhaser -- A lightweight Pipeline framework for phased execution """
 
 from __future__ import print_function
+import abc
 from optparse import OptionParser
 
 
 class Phase(object):
     """ Abstract class for a phase """
+
+    __metaclass__ = abc.ABCMeta
 
     def precondition(self):
         """ Override this to implement checking preconditions. """
@@ -18,6 +21,7 @@ class Phase(object):
     def __call__(self, *args):
         return self.execute(*args)
 
+    @abc.abstractmethod
     def execute(self, *args):
         """ Implement this with the code that should be executed. """
         pass
@@ -43,6 +47,8 @@ class Phase(object):
 class IterPhase(Phase):
     """ Abstract class for an iterating phase. """
 
+    __metaclass__ = abc.ABCMeta
+
     def iter(self):
         """ Implement this to return an iterator for the items to execute. """
         pass
@@ -51,6 +57,7 @@ class IterPhase(Phase):
         for args in self:
             self.function(args)
 
+    @abc.abstractmethod
     def function(self, arg):
         """ Implement this to run on each argument """
         pass
